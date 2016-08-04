@@ -7,6 +7,7 @@ let gulp = require('gulp'),
         extension: 'mp3'
     },
     lvlConfig = {
+        path: 'test.png',
         name: 'lvl1',
         fileExt: 'txt'
     }
@@ -22,7 +23,7 @@ gulp.task('lvl', function() {
     let res = []
     let writer = `export let mapModel = [
     `
-    return getPixels("test.png", function(err, pixels) {
+    return getPixels(`${lvlConfig.path}`, function(err, pixels) {
         if (err) {
             console.log("Bad image path")
             return
