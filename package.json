@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "get-pixels": "^3.3.0",
     "gulp": "^3.9.1",
     "gulp-rename": "^1.2.2"
   }
