@@ -18,7 +18,7 @@ gulp.task('rename', function() {
         }))
         .pipe(gulp.dest(`./dist/${RenameConfig.dirName}/`));
 });
-gulp.task('pixels', function() {
+gulp.task('lvl', function() {
     let res = []
     let writer = `export let mapModel = [
     `
