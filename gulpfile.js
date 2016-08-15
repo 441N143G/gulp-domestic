@@ -3,7 +3,7 @@ let gulp = require('gulp'),
     rename = require("gulp-rename"),
     getPixels = require("get-pixels"),
     RenameConfig = {
-        dirName: 'Uriah Heep',
+        dirName: 'input',
         extension: 'mp3'
     },
     lvlConfig = {
@@ -12,12 +12,19 @@ let gulp = require('gulp'),
         fileExt: 'txt'
     }
 gulp.task('rename', function() {
+    let name;
     return gulp.src(`./${RenameConfig.dirName}/**/*.${  RenameConfig.extension}`)
         .pipe(rename(function(path) {
-            let name = path.basename;
-            path.basename = (name.split(/-|\./)[1] || path.basename).trim()
+            if (path.basename.match(/\d/)) {
+                path.basename = path.basename.split(/\s|-|\./)
+                path.basename.splice(0,1)
+                path.basename = path.basename.join(' ')
+            }else{
+              console.log('nope',  path.basename );
+            }
         }))
-        .pipe(gulp.dest(`./dist/${RenameConfig.dirName}/`));
+
+    .pipe(gulp.dest(`./dist/${RenameConfig.dirName}/`));
 });
 gulp.task('lvl', function() {
     let res = []
